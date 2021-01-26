@@ -1,12 +1,12 @@
 var fs = require('fs');
+const assert = require('assert')
+const shared_secret_default_value = "<your ushashidi webhook 'shared_secret'>"
 
 var configuration = {
-  shared_secret: "<your ushashidi webhook 'shared_secret'>"
+  webhooks: {'<Your webhook URL>': shared_secret_default_value}
 };
 
-
-
-var configFile = './config.json';
+var configFile = './conf/config.json';
 var data;
 
 if (fileExistsSync(configFile)) {
@@ -32,8 +32,6 @@ else {
   });
 }
 
-
-
 function fileExistsSync(file) {
     try {
         fs.accessSync(file, fs.constants.R_OK | fs.constants.W_OK);
@@ -47,7 +45,17 @@ function getConfiguration() {
   return configuration;
 }
 
+function getSharedSecretForWebhook(webhookUrl) {
+
+  assert.ok(getConfiguration().webhooks.hasOwnProperty(webhookUrl), "No shared_secret defined for for webhook url: " + webhookUrl);
+  assert.notStrictEqual(getConfiguration().webhooks[webhookUrl], "", "No shared_secret defined for for webhook url: " + webhookUrl);
+  assert.notStrictEqual(getConfiguration().webhooks[webhookUrl], shared_secret_default_value, "No shared_secret defined for for webhook url: " + webhookUrl);
+
+  return getConfiguration().webhooks[webhookUrl]
+}
+
 module.exports = {
-    getConfiguration
+    getConfiguration,
+    getSharedSecretForWebhook
     
 }

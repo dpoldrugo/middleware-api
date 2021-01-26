@@ -1,4 +1,4 @@
-const conf = require('./configuration.js')
+const conf = require('./conf/configuration.js')
 const express = require('express');
 const assert = require('assert');
 const app = express();
@@ -17,8 +17,8 @@ app.use('/api/*', function(req, res, next) {
 });
 
 
-const utils = require('./utils.js');
-app.post('/api/checkSha256', (req, res) => {
+const utils = require('./api/utils.js');
+app.post('/api/utils/checkSha256', (req, res) => {
   utils.checkSha256(req, res);
 });
 
@@ -28,6 +28,7 @@ app.post('/api/checkSha256', (req, res) => {
 app.use(function(err, req, res, next) {
   // 'SyntaxError: Unexpected token n in JSON at position 0'
   err.message;
+  console.error(err)
   res.status(400).json({ error: err.message });
 });
 

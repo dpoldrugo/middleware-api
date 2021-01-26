@@ -1,4 +1,4 @@
-const conf = require('./configuration.js')
+const conf = require('../conf/configuration.js')
 const assert = require('assert')
 
 function checkSha256(req, res) {
@@ -10,9 +10,11 @@ function checkSha256(req, res) {
   assert.notStrictEqual(req.body.webhook_url, "", "'webhook_url' must be specified!");
   assert.notStrictEqual(req.body.payload, "", "'payload' must be specified!");
 
-  let shared_secret = conf.getConfiguration().shared_secret
-  let sha256_request = req.body.sha256_request;
   let webhook_url = req.body.webhook_url;
+
+   let shared_secret = conf.getSharedSecretForWebhook(webhook_url)
+  let sha256_request = req.body.sha256_request;
+  
   let payload = req.body.payload;
 
   let sha256_calculated = require("crypto").createHmac("sha256", shared_secret)
