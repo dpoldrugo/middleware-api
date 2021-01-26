@@ -16,4 +16,6 @@ API doc: [here](https://documenter.getpostman.com/view/130981/TW6urA3w)
 ### Development & Deployment
 https://repl.it/@dpoldrugo/potres2020
 
-It's currently deployed here: https://potres2020.dpoldrugo.repl.co/api/utils/checkSha256
+It's currently deployed on Repl.it: https://potres2020.dpoldrugo.repl.co/api/utils/checkSha256
+
+[![Run your version on Repl.it](https://repl.it/badge/github/potres2020/middleware-api)](https://repl.it/github/potres2020/middleware-api)
