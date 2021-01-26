@@ -10,3 +10,10 @@ More info: [Ushahidi - Web hooks](https://docs.ushahidi.com/platform-developer-d
 This is a helper API to verify the sha256 digest.
 
 API doc: [here](https://documenter.getpostman.com/view/130981/TW6urA3w)
+
+
+
+### Development & Deployment
+https://repl.it/@dpoldrugo/potres2020
+
+It's currently deployed here: https://potres2020.dpoldrugo.repl.co/api/utils/checkSha256
