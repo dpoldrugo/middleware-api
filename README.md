@@ -11,11 +11,11 @@ This is a helper API to verify the sha256 digest.
 
 API doc: [here](https://documenter.getpostman.com/view/130981/TW6urA3w)
 
-
-
 ### Development & Deployment
-https://repl.it/@dpoldrugo/potres2020
 
-It's currently deployed on Repl.it: https://potres2020.dpoldrugo.repl.co/api/utils/checkSha256
+Production is currently deployed on Repl.it: https://middleware-api.potres2020.repl.co/api/utils/checkSha256
 
-[![Run your version on Repl.it](https://repl.it/badge/github/potres2020/middleware-api)](https://repl.it/github/potres2020/middleware-api)
+Onine IDE and deployment: https://repl.it/@potres2020/middleware-api
+Let me know if you need an invte.
+
+The easiest way how to run it for yourself is like this: [Run your version on Repl.it](https://repl.it/github/potres2020/middleware-api)
