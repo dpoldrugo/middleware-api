@@ -7,7 +7,7 @@ init();
 
 // here list all of API's and modules
 utils = require('./api/utils.js');
-app.post('/api/utils/checkSha256', (req, res) => {
+app.post('/api/potres2020/utils/checkSha256', (req, res) => {
   utils.checkSha256(req, res);
 });
 

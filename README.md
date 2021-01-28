@@ -9,11 +9,11 @@ More info: [Ushahidi - Web hooks](https://docs.ushahidi.com/platform-developer-d
 
 This is a helper API to verify the sha256 digest.
 
-API doc: [here](https://documenter.getpostman.com/view/130981/TW6urA3w)
+API doc: [here](https://documenter.getpostman.com/view/130981/TW6wK9GV)
 
 ### Development & Deployment
 
-Production is currently deployed on Repl.it: https://middleware-api.potres2020.repl.co/api/utils/checkSha256
+Production is currently deployed on Repl.it: https://middleware-api.potres2020.repl.co/api/potres2020/utils/checkSha256
 
 Onine IDE and deployment: https://repl.it/@potres2020/middleware-api
 Let me know if you need an invte.
