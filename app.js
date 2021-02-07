@@ -20,7 +20,7 @@ function init() {
     if (!contype || contype.indexOf('application/json') !== 0)
       return res.status(400).send("'content-type' header should be 'application/json'");
     
-    assert.ok(req.hasOwnProperty("body"), "Misssing JSON body");
+    assert.ok(req.hasOwnProperty("body"), "Missing JSON body");
     next();
   });
 }

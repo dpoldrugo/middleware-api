@@ -14,10 +14,10 @@ function checkSha256(req, res) {
   let shared_secret = conf.getSharedSecretForWebhook(webhook_url)
   let sha256_request = req.body.sha256_request;
   let payload = req.body.payload;
-  let sha256_calculated = require("crypto")
-    .createHmac("sha256", shared_secret)
+  let sha256_calculated = require('crypto')
+    .createHmac('sha256', shared_secret)
     .update(webhook_url+payload)
-    .digest("base64");
+    .digest('base64');
 
   res.status(200).json(new CheckSha256Response(sha256_request === sha256_calculated));
 };
