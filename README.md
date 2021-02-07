@@ -1,6 +1,7 @@
 # Middleware APIs
 
-## Potres2020 checkSha256
+## API's
+### Potres2020 checkSha256
 When a report is created or updated, Ushahidi Platform / Potres2020 can send a POST request to a third- party application listening to HTTP requests on the internet.
 
 Your application receiving the web hook call may check this signature to verify that the web hook payload was originated in the Platform.
@@ -11,7 +12,7 @@ This is a helper API to verify the sha256 digest.
 
 API doc: [here](https://documenter.getpostman.com/view/130981/TW6wK9GV)
 
-### Development & Deployment
+## Development & Deployment
 
 Written in Javascript / NodeJS.
 
@@ -22,17 +23,17 @@ Let me know if you need an invite.
 
 The easiest way how to run it for yourself is like this: [Run your version on Repl.it](https://repl.it/github/potres2020/middleware-api)
 
-#### Local setup
+### Local setup
 
-##### Requirements
+#### Requirements
 NodeJS >=v12.18.3 
 
 ``./setup.sh``
 
-##### Running locally
+#### Running locally
 ``./run.sh``
 
-##### Idea setup for debugging with code hot-swapping (without restart)
+#### Idea setup for debugging with code hot-swapping (without restart)
 Install [nodemon](https://github.com/remy/nodemon): ``npm install -g nodemon``
 
 And then in Idea create a Run/Debug configuration like this:
