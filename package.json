@@ -7,8 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "dpoldrugo@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/potres2020/middleware-api"
+  },
+  "license": "AGPL-3.0-only",
   "dependencies": {
     "express": "^4.17.1"
   }
