@@ -13,9 +13,27 @@ API doc: [here](https://documenter.getpostman.com/view/130981/TW6wK9GV)
 
 ### Development & Deployment
 
+Written in Javascript / NodeJS.
+
 Production is currently deployed on Repl.it: https://middleware-api.potres2020.repl.co/api/potres2020/utils/checkSha256
 
-Onine IDE and deployment: https://repl.it/@potres2020/middleware-api
-Let me know if you need an invte.
+Online IDE and deployment: [https://repl.it/@potres2020/middleware-api](https://repl.it/@potres2020/middleware-api)
+Let me know if you need an invite.
 
 The easiest way how to run it for yourself is like this: [Run your version on Repl.it](https://repl.it/github/potres2020/middleware-api)
+
+#### Local setup
+
+##### Requirements
+NodeJS >=v12.18.3 
+
+``./setup.sh``
+
+##### Running locally
+``./run.sh``
+
+##### Idea setup for debugging with code hot-swapping (without restart)
+Install [nodemon](https://github.com/remy/nodemon): ``npm install -g nodemon``
+
+And then in Idea create a Run/Debug configuration like this:
+![](idea_nodemon_setup.png)
