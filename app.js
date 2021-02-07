@@ -5,11 +5,7 @@ const app = express();
 
 init();
 
-// here list all of API's and modules
-utils = require('./api/utils.js');
-app.post('/api/potres2020/utils/checkSha256', (req, res) => {
-  utils.checkSha256(req, res);
-});
+app.use('/api',require('./api-routes'));
 
 errorHandling();
 startApp();

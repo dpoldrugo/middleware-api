@@ -1,4 +1,4 @@
-const conf = require('../conf/configuration.js')
+const conf = require('../../conf/configuration.js')
 const assert = require('assert');
 
 function checkSha256(req, res) {
@@ -26,7 +26,7 @@ function checkSha256(req, res) {
 
 class CheckSha256Response {
   constructor(valid) {
-    this.valid = Boolean(valid); ;
+    this.valid = Boolean(valid);
   }
 }
 
