@@ -11,13 +11,11 @@ function checkSha256(req, res) {
   assert.notStrictEqual(req.body.payload, "", "'payload' must not be empty!");
 
   let webhook_url = req.body.webhook_url;
-
-   let shared_secret = conf.getSharedSecretForWebhook(webhook_url)
+  let shared_secret = conf.getSharedSecretForWebhook(webhook_url)
   let sha256_request = req.body.sha256_request;
-  
   let payload = req.body.payload;
-
-  let sha256_calculated = require("crypto").createHmac("sha256", shared_secret)
+  let sha256_calculated = require("crypto")
+    .createHmac("sha256", shared_secret)
     .update(webhook_url+payload)
     .digest("base64");
 
