@@ -53,28 +53,10 @@ function errorHandling() {
 }
 
 function initMarkDownSupport() {
-  // expressHandlebars.create({
-  //   // Specify helpers which are only registered on this instance.
-  //   helpers: {
-  //     fileExists: function (file) { return conf.fileExistsSync(file); },
-  //   }
-  // });
-
   app.set('views', path.resolve(__dirname, 'views'));
   app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
   app.set('view engine', 'handlebars');
   app.use(express.static(path.resolve(__dirname, './public')));
-
-  app.get("/", markdownServe.middleware({
-    rootDirectory: path.resolve(__dirname, '.'),
-    view: 'markdown',
-    preParse: true,
-    resolverOptions: {
-      defaultPageName: 'README',   // name of default document in each sub folder
-      fileExtension: 'md',
-      useExtensionInUrl: false
-    }
-  }));
 
   app.use(markdownServe.middleware({
     rootDirectory: path.resolve(__dirname, 'web'),
