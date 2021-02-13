@@ -56,6 +56,8 @@ function initMarkDownSupport() {
   app.set('views', path.resolve(__dirname, 'views'));
   app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
   app.set('view engine', 'handlebars');
+
+  app.use('/public/images/:file', (req, res) => { res.sendFile(path.resolve('public/images/' + req.params.file)) });
   app.use(express.static(path.resolve(__dirname, './public')));
 
   app.use(markdownServe.middleware({

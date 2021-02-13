@@ -36,4 +36,4 @@ Install [nodemon](https://github.com/remy/nodemon): ``npm install -g nodemon``
 
 And then in Idea create a Run/Debug configuration like this:
 
-![](./images/idea_nodemon_setup.png)
+![](public/images/idea_nodemon_setup.png)
