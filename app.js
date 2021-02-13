@@ -1,16 +1,22 @@
 const conf = require('./conf/configuration.js')
 const express = require('express');
 const assert = require('assert');
+const path = require('path')
+const expressHandlebars = require('express-handlebars')
+const markdownServe = require('markdown-serve')
+const fs = require('fs');
 const app = express();
 
 init();
 
-app.use('/api',require('./api-routes'));
+app.use('/api', require('./api-routes'));
 
 errorHandling();
 startApp();
 
 function init() {
+  initMarkDownSupport()
+
   // Parse JSON bodies for this app. Make sure you put
   // `app.use(express.json())` **before** your route handlers!
   app.use(express.json());
@@ -44,5 +50,36 @@ function errorHandling() {
     console.error(err)
     res.status(400).json({ error: err.message });
   });
+}
+
+function initMarkDownSupport() {
+  // expressHandlebars.create({
+  //   // Specify helpers which are only registered on this instance.
+  //   helpers: {
+  //     fileExists: function (file) { return conf.fileExistsSync(file); },
+  //   }
+  // });
+
+  app.set('views', path.resolve(__dirname, 'views'));
+  app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
+  app.set('view engine', 'handlebars');
+  app.use(express.static(path.resolve(__dirname, './public')));
+
+  app.get("/", markdownServe.middleware({
+    rootDirectory: path.resolve(__dirname, '.'),
+    view: 'markdown',
+    preParse: true,
+    resolverOptions: {
+      defaultPageName: 'README',   // name of default document in each sub folder
+      fileExtension: 'md',
+      useExtensionInUrl: false
+    }
+  }));
+
+  app.use(markdownServe.middleware({
+    rootDirectory: path.resolve(__dirname, 'web'),
+    view: 'markdown',
+    preParse: true
+  }));
 }
 

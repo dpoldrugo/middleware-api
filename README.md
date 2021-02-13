@@ -1,5 +1,3 @@
-# Middleware APIs
-
 ## API's
 ### Potres2020 checkSha256
 When a report is created or updated, Ushahidi Platform / Potres2020 can send a POST request to a third- party application listening to HTTP requests on the internet.
@@ -26,7 +24,7 @@ The easiest way how to run it for yourself is like this: [Run your version on Re
 ### Local setup
 
 #### Requirements
-NodeJS >=v12.18.3 
+NodeJS >=v12.18.3
 
 ``./setup.sh``
 
@@ -37,4 +35,5 @@ NodeJS >=v12.18.3
 Install [nodemon](https://github.com/remy/nodemon): ``npm install -g nodemon``
 
 And then in Idea create a Run/Debug configuration like this:
-![](idea_nodemon_setup.png)
+![](./images/idea_nodemon_setup.png)
+![](.public/images/idea_nodemon_setup.png)

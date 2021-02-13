@@ -56,6 +56,7 @@ function getSharedSecretForWebhook(webhookUrl) {
 
 module.exports = {
     getConfiguration,
-    getSharedSecretForWebhook
+    getSharedSecretForWebhook,
+    fileExistsSync
     
 }
