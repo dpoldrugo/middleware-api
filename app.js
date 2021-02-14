@@ -15,13 +15,12 @@ errorHandling();
 startApp();
 
 function init() {
+  app.get('/status', function(req, res, next) {res.send("OK")} );
   initMarkDownSupport()
 
   // Parse JSON bodies for this app. Make sure you put
   // `app.use(express.json())` **before** your route handlers!
   app.use(express.json());
-
-  app.get('/status', function(req, res, next) {res.send("OK")} );
 
   app.use('/api/*', function(req, res, next) {
     var contype = req.headers['content-type'];
