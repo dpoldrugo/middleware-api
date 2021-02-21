@@ -15,6 +15,7 @@
   "scripts": {
     "tsc": "tsc",
     "start": "./node_modules/.bin/ts-node src/index.ts",
+    "prestart:production": "npm run-script test:coverage",
     "start:production": "cross-env NODE_ENV=production npm start",
     "prestart:dev": "npm run-script start:mongo:dev --args=-d",
     "start:dev": "npm start",
