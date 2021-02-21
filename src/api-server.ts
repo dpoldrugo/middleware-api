@@ -74,12 +74,7 @@ export class ApiServer {
         // Parse JSON bodies for this app. Make sure you put
         // `app.use(express.json())` **before** your route handlers!
         this.app.use(express.json());
-        if (process.env.IS_HEROKU) {
-            this.app.use('/test-coverage', express.static(path.resolve(__dirname, '../dist/test-coverage')));
-        }
-        else {
-            this.app.use('/test-coverage', express.static(path.resolve(__dirname, '../reports/coverage')));
-        }
+        this.app.use('/test-coverage',express.static(path.resolve(__dirname, '../reports/coverage')));
         this.app.use(cors());
         this.app.use(morgan('combined'));
         // this.app.use(morgan('dev'));
