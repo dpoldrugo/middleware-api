@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "ts-node": "7.0.1",
+    "typescript": "3.5.1",
     "cors": "^2.8.5",
     "dotenv": "8.0.0",
     "express": "^4.17.1",
@@ -75,8 +76,7 @@
     "rimraf": "2.6.3",
     "source-map-support": "0.5.9",
     "tslint": "5.17.0",
-    "tslint-config-prettier": "^1.17.0",
-    "typescript": "3.5.1"
+    "tslint-config-prettier": "^1.17.0"
   },
   "nyc": {
     "include": [
