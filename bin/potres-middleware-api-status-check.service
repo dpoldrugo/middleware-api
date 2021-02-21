@@ -1,0 +1,9 @@
+[Unit]
+Description=potres-middleware-api-status-check
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/potres-middleware-api-status-check.sh 60
+
+[Install]
+WantedBy=multi-user.target

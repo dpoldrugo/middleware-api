@@ -1,4 +1,14 @@
-yarn.lock
+.DS_Store
+dist
+doc
 node_modules
-conf/config.json
-*.iml
+.vscode
+.nyc_output
+coverage
+*.log
+npm-debug.log*
+.idea
+.env.production
+src/**/*.js
+test/**/*.js
+mongodb

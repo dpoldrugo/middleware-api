@@ -1,0 +1,19 @@
+swagger:
+  outputDirectory: ./dist
+  entryFile: 
+    - ./src/api/*
+  outputFormat: OpenApi_3
+  name: middleware-api
+  description: Middleware API for the Potres2020 ecosystem
+  license: AGPL-3.0-only
+  produces: [application/json]
+  version: 1.0.0
+  securityDefinitions:
+    default:
+      type: apiKey
+      in: header
+      name: Authorization
+    secondAuthenticator:
+      type: apiKey
+      in: header
+      name: Authorization
