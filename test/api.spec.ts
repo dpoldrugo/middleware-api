@@ -26,7 +26,7 @@ describe('API Tests', () => {
             baseUrl: `http://localhost:${process.env.PORT}`,
             headers: {'Content-Type': 'application/json'}
         });
-        if (process.env.NODE_ENV === 'test') {
+        if (process.env.NODE_ENV.includes('test')) {
             apiServer = new ApiServer();
             await apiServer.start();
             // tslint:disable-next-line:no-console

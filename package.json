@@ -15,7 +15,7 @@
   "scripts": {
     "tsc": "tsc",
     "start": "./node_modules/.bin/ts-node src/index.ts",
-    "prestart:production": "npm run-script test:coverage",
+    "build:production": "MONGODB_URI=mongodb+srv://middleware-api-test:middleware-api-test@cluster0.nyxve.mongodb.net/middleware-api-test npm run-script test:coverage --timeout=60000",
     "start:production": "cross-env NODE_ENV=production npm start",
     "prestart:dev": "npm run-script start:mongo:dev --args=-d",
     "start:dev": "npm start",
@@ -28,10 +28,13 @@
     "clean": "rimraf dist",
     "lint": "tslint ./src/**/*.ts ./test/**/*.ts",
     "lint:fix": "tslint --fix ./src/**/*.ts ./test/**/*.ts -t verbose",
-    "pretest": "cross-env NODE_ENV=test npm run build && npm run lint && docker-compose -f docker-compose-local-mongo-for-tests.yml up -d",
-    "test": "cross-env NODE_ENV=test mocha --exit",
-    "posttest": "docker-compose -f docker-compose-local-mongo-for-tests.yml down",
+    "pretest": "cross-env NODE_ENV=test npm run build && npm run lint",
+    "test": "cross-env NODE_ENV=test mocha $npm_config_timeout --exit",
     "test:coverage": "nyc npm run test",
+    "pretest:docker": "cross-env NODE_ENV=test-docker npm run build && npm run lint && docker-compose -f docker-compose-local-mongo-for-tests.yml up -d",
+    "test:docker": "cross-env NODE_ENV=test-docker mocha $npm_config_timeout --exit",
+    "posttest:docker": "docker-compose -f docker-compose-local-mongo-for-tests.yml down",
+    "test:coverage:docker": "nyc npm run test:docker",
     "swagger": "swaggerGen -c ./swagger.config.yml"
   },
   "dependencies": {
