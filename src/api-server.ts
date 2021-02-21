@@ -132,24 +132,24 @@ export class ApiServer {
         this.app.engine('handlebars', require("express-handlebars")({defaultLayout: 'main'}));
         this.app.set('view engine', 'handlebars');
         this.app.use(express.static(path.resolve(__dirname, 'public')));
-        this.app.use('/', (req: express.Request, res: express.Response, next: express.NextFunction) => {
-            res.redirect('/web');
-        } );
-        this.app.use('/web', markdownHandler);
+        this.app.use(markdownHandler);
     }
 }
 
 const markdownServer = new markdownServe.MarkdownServer( path.resolve(__dirname, 'web') );
 function markdownHandler(req: express.Request, res: express.Response, next: express.NextFunction) {
-    if (req.method !== 'GET')
+    if (req.path.startsWith('/api') || req.path.includes('images') || req.method !== 'GET')
         next();
 
     markdownServer.get(req.path, (err: any, result: any) => {
         // result is a MarkdownFile instance
+
         if (err) {
             // just log error & pass it to next middleware
-            // tslint:disable-next-line:no-console
-            console.log(err);
+            if (!req.path.startsWith('/api')) {
+                // tslint:disable-next-line:no-console
+                console.log(err);
+            }
             next();
             return;   // need return here because we are inside a callback
         }
