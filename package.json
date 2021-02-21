@@ -36,7 +36,7 @@
     "posttest:docker": "docker-compose -f docker-compose-local-mongo-for-tests.yml down",
     "test:coverage:docker": "nyc npm run test:docker",
     "swagger": "swaggerGen -c ./swagger.config.yml",
-    "postinstall": "mv -v ./reports/coverage dist/test-coverage"
+    "heroku-postbuild": "npm run-script build:production & mv -v reports/coverage dist/test-coverage"
   },
   "dependencies": {
     "ts-node": "7.0.1",
