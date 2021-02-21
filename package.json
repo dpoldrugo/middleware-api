@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Middleware API for the Potres2020 ecosystem",
   "author": "dpoldrugo@gmail.com",
+  "engines": { "node": "12.18.3" },
   "homepage": "http://middleware-api.potres2020.repl.co",
   "organization": "potres2020",
   "organization.github": "https://github.com/potres2020",
