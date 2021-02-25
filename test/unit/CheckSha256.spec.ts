@@ -1,12 +1,13 @@
 import * as test_utils from "../test-utils/utils";
 test_utils.initEnvFile();
 import {CheckSha256Request} from "../../src/model/CheckSha256Request";
-import {CheckSha256Util} from "../../src/classes/CheckSha256Util";
+import {CheckSha256Util} from "../../src/service/CheckSha256Util";
 import * as chai from 'chai';
 import {describe, test} from 'mocha';
+import {Container, Inject} from "typescript-ioc";
 
 const expect = chai.expect;
-const checkSha256Util = new CheckSha256Util();
+const checkSha256Util: CheckSha256Util = Container.get(CheckSha256Util);
 
 describe("CheckSha256Util.check", () => {
     it("should be true for a correct sha256, webhookUrl and payload", () => {

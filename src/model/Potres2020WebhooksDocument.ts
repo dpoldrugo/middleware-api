@@ -6,11 +6,14 @@ type Potres2020WebhooksDocument = Potres2020Webhooks & mongoose.Document;
 
 export interface Potres2020Webhooks {
     /**
-     * @type {string} sharedSecret it will be used to calculates sha256
+     * SharedSecret which you defined in Ushahidi.
+     * it will be used to calculates sha256
+     * @type {string}
      */
     sharedSecret: string;
     /**
-     * @type {string} a valid url which you defined in Ushahidi
+     * A valid url which you defined in Ushahidi
+     * @type {string}
      */
     url: string;
 }

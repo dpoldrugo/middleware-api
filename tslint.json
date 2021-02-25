@@ -24,6 +24,7 @@
       true,
       "always"
     ],
-    "curly": false
+    "curly": false,
+    "no-console": false
   }
 }

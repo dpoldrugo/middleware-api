@@ -28,7 +28,7 @@ export class MongoConnector {
             if (process.env.NODE_ENV !== 'production') {
                 mongoose.connection.once('open', function() {
                     console.log('MongoDB event open');
-                    //console.log('MongoDB connected [%s]', process.env.MONGODB_URI);
+                    // console.log('MongoDB connected [%s]', process.env.MONGODB_URI);
 
                     mongoose.connection.on('connected', () => {
                         console.log('MongoDB event connected');
@@ -51,8 +51,8 @@ export class MongoConnector {
 
             const options: ConnectionOptions = {
                 keepAlive: true,
-                useNewUrlParser: true,
                 useCreateIndex: true,
+                useNewUrlParser: true,
                 useUnifiedTopology: true
                 // promiseLibrary: require('bluebird')
             };
@@ -62,8 +62,8 @@ export class MongoConnector {
                 const db = indexOfA !== -1 ?
                     process.env.MONGODB_URI.substring(0, process.env.MONGODB_URI.indexOf('/')+2) + '!_:_!' + process.env.MONGODB_URI.substring(indexOfA) :
                     process.env.MONGODB_URI;
-                // tslint:disable-next-line:no-console
                 // TODO: winston
+                // tslint:disable-next-line:no-console
                 console.log('MongoDB connected [%s]', db);
                 resolve();
             }).catch(reject);

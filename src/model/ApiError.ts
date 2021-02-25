@@ -1,9 +1,20 @@
-export class ApiError {
-    public readonly error: string;
-    public readonly code: number;
+/**
+ * All API errors are in this format.
+ */
+import {IsInt} from "typescript-rest-swagger";
 
-    constructor(message: string, code: number) {
-        this.error = message;
+export class ApiError {
+    /**
+     * Error message
+     */
+    public readonly error: string;
+    /**
+     * HTTP status code
+     */
+    @IsInt public readonly code: number;
+
+    constructor(error: string, code: number) {
+        this.error = error;
         this.code = code;
     }
 }

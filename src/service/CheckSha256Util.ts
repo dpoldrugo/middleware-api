@@ -1,6 +1,9 @@
 import {createHmac} from "crypto";
 import {CheckSha256Request} from "../model/CheckSha256Request";
+import {OnlyInstantiableByContainer, Singleton} from "typescript-ioc";
 
+@OnlyInstantiableByContainer
+@Singleton
 export class CheckSha256Util {
     public check(checkSha256Request: CheckSha256Request,
                  sharedSecret: string,

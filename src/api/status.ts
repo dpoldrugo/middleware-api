@@ -12,7 +12,7 @@ export class StatusApi {
      * </pre>
      *
      */
-    @Response<StatusResponse>(200, "OK when you can reach this endpoint!", new StatusResponse("OK"))
+    @Response<StatusResponse>(200, "OK when you can reach this endpoint!", {status: 'OK'})
     @GET
     public ok() {
         return new StatusResponse("OK");
