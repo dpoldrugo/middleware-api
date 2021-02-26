@@ -12,14 +12,13 @@ API doc: [here](https://documenter.getpostman.com/view/130981/TW6wK9GV)
 
 ## Development & Deployment
 
-Written in Javascript / NodeJS.
+Source code: https://github.com/dpoldrugo/middleware-api
 
-Production is currently deployed on Repl.it: https://middleware-api.potres2020.repl.co/api/potres2020/utils/checkSha256
+Written in Typescript / Javascript (NodeJS).
 
-Online IDE and deployment: [https://repl.it/@potres2020/middleware-api](https://repl.it/@potres2020/middleware-api)
-Let me know if you need an invite.
+Production is currently deployed on Heroku: https://potres2020-middlware-api.herokuapp.com
 
-The easiest way how to run it for yourself is like this: [Run your version on Repl.it](https://repl.it/github/potres2020/middleware-api)
+The easiest way how to run it for yourself is like this: [Run your version on Repl.it](https://repl.it/github/dpoldrugo/middleware-api)
 
 ### Local setup
 
