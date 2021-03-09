@@ -1,20 +1,51 @@
+## API doc
+- [Swagger](https://potres2020-middlware-api.herokuapp.com/api-docs/)
+- [Postman collection](https://documenter.getpostman.com/view/130981/TW6wK9GV)
+
 ## API's
-### Potres2020 checkSha256
-When a report is created or updated, Ushahidi Platform / Potres2020 can send a POST request to a third- party application listening to HTTP requests on the internet.
 
-Your application receiving the web hook call may check this signature to verify that the web hook payload was originated in the Platform.
+### POST /api/sync/changes/:sourceIdentifier
+    /**
+     * Endpoint for incoming changes from external systems.
+     * Changes from the POST body will be processed by one or more {@link SourceProcessor} added to {@link SourceProcessorRegistry}.
+     *
+     * @param {string} sourceIdentifier the unique identifier of the source of the changes. For now only 'potres2020' is accepted.
+     * For 'potres2020' the {@link Potres2020ChangesToPotresAppProcessor} will kick-in and save changes to 'potres.app'
+     * @param {SyncChangesRequest} syncChangesRequest json data which should be synced to other systems. Example: [potres2020-test-post.json](/examples-json/test-data/insert/potres2020-test-post.json)
+     * @return {SyncChangesResponse}
+     */
 
-More info: [Ushahidi - Web hooks](https://docs.ushahidi.com/platform-developer-documentation/tech-stack/connected-app-development/web-hooks)
+### POST /api/potres2020/utils/checkSha256
+    /**
+     * Checks sha256 by comparing the sha256 from the request which originated from Ushahidi and the calculated sha256 based
+     * on {@link CheckSha256Request.webhookUrl}, {@link CheckSha256Request.payload} and signing it with a previously
+     * stored {@link Potres2020Webhooks.sharedSecret} via the {@link WebhooksApi}.
+     *
+     * More info: [Ushahidi - Web hooks](https://docs.ushahidi.com/platform-developer-documentation/tech-stack/connected-app-development/web-hooks)
+     * @param checkSha256Request
+     */
 
-This is a helper API to verify the sha256 digest.
+### POST /api/potres2020/webhooks
+    /**
+     * Save Potres2020 webhooks so {@link UtilsApi} can check sha256 based on on a stored shared secret.
+     *
+     * @param {Potres2020Webhooks} createWebhookRequest
+     * @return {Potres2020Webhooks} with additional database properties.
+     */
 
-API doc: [here](https://documenter.getpostman.com/view/130981/TW6wK9GV)
+### GET /api/status
+    /**
+     * Status check which is service is up should return:
+     * <pre>
+     *     {"status": "OK"}
+     * </pre>
+     */
 
 ## Development & Deployment
 
 Source code: https://github.com/dpoldrugo/middleware-api
 
-Written in Typescript / Javascript (NodeJS).
+Written in Typescript (NodeJS).
 
 Production is currently deployed on Heroku: https://potres2020-middlware-api.herokuapp.com
 

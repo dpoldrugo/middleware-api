@@ -10,7 +10,6 @@ export class StatusApi {
      * <pre>
      *     {"status": "OK"}
      * </pre>
-     *
      */
     @Response<StatusResponse>(200, "OK when you can reach this endpoint!", {status: 'OK'})
     @GET
