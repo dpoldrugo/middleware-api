@@ -75,6 +75,7 @@ export class ApiServer {
         // `app.use(express.json())` **before** your route handlers!
         this.app.use(express.json());
         this.app.use('/test-coverage',express.static(path.resolve(__dirname, '../reports/coverage')));
+        this.app.use('/examples-json', express.static(path.resolve(__dirname, '../test/it/sync-changes/potres2020_to_potres.app')));
         this.app.use(cors());
         this.app.use(morgan('combined'));
         // this.app.use(morgan('dev'));
@@ -138,8 +139,10 @@ export class ApiServer {
 
 const markdownServer = new markdownServe.MarkdownServer( path.resolve(__dirname, 'web') );
 function markdownHandler(req: express.Request, res: express.Response, next: express.NextFunction) {
-    if (req.path.startsWith('/api') || req.path.includes('images') || req.method !== 'GET')
+    if (req.path.startsWith('/api') || req.path.includes('images') || req.method !== 'GET') {
         next();
+        return;
+    }
 
     markdownServer.get(req.path, (err: any, result: any) => {
         // result is a MarkdownFile instance

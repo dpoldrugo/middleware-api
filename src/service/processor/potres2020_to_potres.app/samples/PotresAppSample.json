@@ -1,0 +1,720 @@
+{
+  "entry": {
+    "id": 8,
+    "title": "TEST: Trebam pomoć oko testiranja",
+    "location": "Pula, Croatia",
+    "location_latitude": 44.8666232,
+    "location_longitude": 13.8495788,
+    "description": "Testni unos",
+    "contact_name": "Davor",
+    "contact_email": "Poldrugo",
+    "contact_phone": "+385921068955",
+    "contact_available_on_whatsapp": true,
+    "contact_available_on_telegram": true,
+    "status": "provjereno",
+    "assigned_coordinator": null,
+    "volunteer_assigned": null,
+    "done": false,
+    "follow_up_date": null,
+    "tags": "Hrana",
+    "date_from": null,
+    "date_until": null,
+    "entry_category": {
+      "id": 1,
+      "type_slug": "zahtjev-za-pomoc",
+      "type_name": "Zahtjev za pomoć",
+      "available_in_public_menu": true,
+      "menu_title": "Zahtjevi za pomoć",
+      "plural_title": "Zahtjevi za pomoć",
+      "category_color_hex": "#E02020",
+      "add_entry_label": "Trebam pomoć",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2021-02-05T17:54:10.287Z",
+      "updated_at": "2021-02-26T13:11:47.435Z",
+      "category_map_pin_icon": {
+        "id": 28,
+        "name": "map-marker--help-needed.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_help_needed_0bcea3f6a2",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.26,
+        "url": "/uploads/map_marker_help_needed_0bcea3f6a2.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:11:41.905Z",
+        "updated_at": "2021-02-26T13:11:41.918Z"
+      },
+      "category_map_pin_icon_assigned": {
+        "id": 29,
+        "name": "map-marker--help-needed--assigned.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_help_needed_assigned_0855162228",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.2,
+        "url": "/uploads/map_marker_help_needed_assigned_0855162228.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:11:45.875Z",
+        "updated_at": "2021-02-26T13:11:45.884Z"
+      }
+    },
+    "notes": null,
+    "integrations_data": null,
+    "volunteer_marked_as_done": null,
+    "published_at": "2021-02-17T08:45:42.203Z",
+    "created_at": "2021-02-17T08:45:42.227Z",
+    "updated_at": "2021-02-26T13:11:47.432Z",
+    "comments": []
+  },
+  "itemTags": [
+    {
+      "id": 2,
+      "tag": "Crijep",
+      "published_at": "2021-01-06T18:18:33.195Z",
+      "created_at": "2021-01-06T18:18:31.765Z",
+      "updated_at": "2021-01-06T18:18:33.244Z"
+    },
+    {
+      "id": 1,
+      "tag": "Dimnjak",
+      "published_at": "2021-01-06T18:18:23.881Z",
+      "created_at": "2021-01-06T18:18:21.687Z",
+      "updated_at": "2021-01-06T18:18:23.941Z"
+    },
+    {
+      "id": 10,
+      "tag": "GRAĐEVINA",
+      "published_at": "2021-01-16T10:42:47.483Z",
+      "created_at": "2021-01-16T10:36:12.438Z",
+      "updated_at": "2021-01-16T10:42:47.533Z"
+    },
+    {
+      "id": 14,
+      "tag": "Građevina-INSTALACIJE",
+      "published_at": "2021-01-16T10:42:53.621Z",
+      "created_at": "2021-01-16T10:38:18.217Z",
+      "updated_at": "2021-01-16T10:42:53.645Z"
+    },
+    {
+      "id": 19,
+      "tag": "Građevina-Instalacije-STRUJA",
+      "published_at": "2021-01-16T10:42:57.775Z",
+      "created_at": "2021-01-16T10:40:48.504Z",
+      "updated_at": "2021-01-16T10:42:57.801Z"
+    },
+    {
+      "id": 20,
+      "tag": "Građevina-Instalacije-VODA",
+      "published_at": "2021-01-16T10:43:04.356Z",
+      "created_at": "2021-01-16T10:41:11.613Z",
+      "updated_at": "2021-01-16T10:43:04.379Z"
+    },
+    {
+      "id": 11,
+      "tag": "Građevina-KROV",
+      "published_at": "2021-01-16T10:43:10.520Z",
+      "created_at": "2021-01-16T10:36:42.934Z",
+      "updated_at": "2021-01-16T10:43:10.548Z"
+    },
+    {
+      "id": 13,
+      "tag": "Građevina-RUŠENJE",
+      "published_at": "2021-01-16T10:42:28.401Z",
+      "created_at": "2021-01-16T10:37:59.031Z",
+      "updated_at": "2021-01-16T10:42:28.424Z"
+    },
+    {
+      "id": 3,
+      "tag": "Hrana",
+      "published_at": "2021-01-06T18:18:43.775Z",
+      "created_at": "2021-01-06T18:18:41.895Z",
+      "updated_at": "2021-01-06T18:18:43.853Z"
+    },
+    {
+      "id": 4,
+      "tag": "Kontejner",
+      "published_at": "2021-01-06T18:18:53.031Z",
+      "created_at": "2021-01-06T18:18:51.613Z",
+      "updated_at": "2021-01-06T18:18:53.128Z"
+    },
+    {
+      "id": 7,
+      "tag": "Krov",
+      "published_at": "2021-01-06T18:19:15.991Z",
+      "created_at": "2021-01-06T18:19:14.224Z",
+      "updated_at": "2021-01-06T18:19:16.080Z"
+    },
+    {
+      "id": 5,
+      "tag": "Kućica",
+      "published_at": "2021-01-06T18:18:58.647Z",
+      "created_at": "2021-01-06T18:18:57.324Z",
+      "updated_at": "2021-01-06T18:18:58.715Z"
+    },
+    {
+      "id": 9,
+      "tag": "Ostalo",
+      "published_at": "2021-01-06T18:19:34.465Z",
+      "created_at": "2021-01-06T18:19:33.034Z",
+      "updated_at": "2021-01-06T18:19:34.517Z"
+    },
+    {
+      "id": 6,
+      "tag": "Rušenje",
+      "published_at": "2021-01-06T18:19:06.329Z",
+      "created_at": "2021-01-06T18:19:04.388Z",
+      "updated_at": "2021-01-06T18:19:06.416Z"
+    },
+    {
+      "id": 12,
+      "tag": "SMJEŠTAJ",
+      "published_at": "2021-01-16T10:43:20.824Z",
+      "created_at": "2021-01-16T10:37:14.958Z",
+      "updated_at": "2021-01-16T10:43:20.869Z"
+    },
+    {
+      "id": 15,
+      "tag": "Smještaj-KAMP KUĆICA",
+      "published_at": "2021-01-16T10:43:28.968Z",
+      "created_at": "2021-01-16T10:38:44.409Z",
+      "updated_at": "2021-01-16T10:43:29.013Z"
+    },
+    {
+      "id": 16,
+      "tag": "Smještaj-KONTEJNER",
+      "published_at": "2021-01-16T10:43:33.895Z",
+      "created_at": "2021-01-16T10:38:57.701Z",
+      "updated_at": "2021-01-16T17:27:04.554Z"
+    },
+    {
+      "id": 17,
+      "tag": "Smještaj-MOBILNA KUĆA",
+      "published_at": "2021-01-16T10:43:40.792Z",
+      "created_at": "2021-01-16T10:39:14.002Z",
+      "updated_at": "2021-01-16T10:43:40.843Z"
+    },
+    {
+      "id": 18,
+      "tag": "Smještaj-MODULARNA KUĆA",
+      "published_at": "2021-01-16T10:43:45.641Z",
+      "created_at": "2021-01-16T10:39:39.157Z",
+      "updated_at": "2021-01-16T10:43:45.663Z"
+    },
+    {
+      "id": 21,
+      "tag": "Smještaj-OPREMA",
+      "published_at": "2021-01-16T17:08:23.604Z",
+      "created_at": "2021-01-16T17:08:21.543Z",
+      "updated_at": "2021-01-16T17:08:23.636Z"
+    },
+    {
+      "id": 23,
+      "tag": "Smještaj-Oprema-NAMJEŠTAJ",
+      "published_at": "2021-01-16T17:14:35.372Z",
+      "created_at": "2021-01-16T17:14:33.699Z",
+      "updated_at": "2021-01-16T17:14:35.414Z"
+    },
+    {
+      "id": 22,
+      "tag": "Smještaj-Oprema-PRIBOR",
+      "published_at": "2021-01-16T17:13:44.682Z",
+      "created_at": "2021-01-16T17:09:09.587Z",
+      "updated_at": "2021-01-16T17:13:44.705Z"
+    },
+    {
+      "id": 8,
+      "tag": "Ugrožena djeca",
+      "published_at": "2021-01-06T18:19:28.669Z",
+      "created_at": "2021-01-06T18:19:26.454Z",
+      "updated_at": "2021-01-06T18:19:28.710Z"
+    }
+  ],
+  "availableEntryCategories": [
+    {
+      "id": 1,
+      "type_slug": "zahtjev-za-pomoc",
+      "type_name": "Zahtjev za pomoć",
+      "available_in_public_menu": true,
+      "menu_title": "Zahtjevi za pomoć",
+      "plural_title": "Zahtjevi za pomoć",
+      "category_color_hex": "#E02020",
+      "add_entry_label": "Trebam pomoć",
+      "created_at": "2021-02-05T17:54:10.287Z",
+      "updated_at": "2021-02-26T13:11:47.435Z",
+      "category_map_pin_icon": {
+        "id": 28,
+        "name": "map-marker--help-needed.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_help_needed_0bcea3f6a2",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.26,
+        "url": "/uploads/map_marker_help_needed_0bcea3f6a2.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:11:41.905Z",
+        "updated_at": "2021-02-26T13:11:41.918Z"
+      },
+      "category_map_pin_icon_assigned": {
+        "id": 29,
+        "name": "map-marker--help-needed--assigned.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_help_needed_assigned_0855162228",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.2,
+        "url": "/uploads/map_marker_help_needed_assigned_0855162228.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:11:45.875Z",
+        "updated_at": "2021-02-26T13:11:45.884Z"
+      },
+      "entries": [
+        {
+          "id": 8,
+          "title": "TEST: Trebam pomoć oko testiranja",
+          "location": "Pula, Croatia",
+          "location_latitude": 44.8666232,
+          "location_longitude": 13.8495788,
+          "description": "Testni unos",
+          "contact_name": "Davor",
+          "contact_email": "Poldrugo",
+          "contact_phone": "+385921068955",
+          "contact_available_on_whatsapp": true,
+          "contact_available_on_telegram": true,
+          "status": "provjereno",
+          "assigned_coordinator": null,
+          "volunteer_assigned": null,
+          "done": false,
+          "follow_up_date": null,
+          "tags": "Hrana",
+          "date_from": null,
+          "date_until": null,
+          "entry_category": 1,
+          "notes": null,
+          "integrations_data": null,
+          "volunteer_marked_as_done": null,
+          "published_at": "2021-02-17T08:45:42.203Z",
+          "created_by": null,
+          "updated_by": 3,
+          "created_at": "2021-02-17T08:45:42.227Z",
+          "updated_at": "2021-02-26T13:11:47.432Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type_slug": "distribucijski-centar",
+      "type_name": "Distribucijski centar",
+      "available_in_public_menu": true,
+      "menu_title": "Distribucijski centri",
+      "plural_title": "Distribucijski centri",
+      "category_color_hex": "#27ae60",
+      "add_entry_label": "Mjesto za distribuciju pomoći",
+      "created_at": "2021-02-05T17:54:57.813Z",
+      "updated_at": "2021-02-26T13:10:50.427Z",
+      "category_map_pin_icon": {
+        "id": 21,
+        "name": "map-marker--aid-collection.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_aid_collection_e635624c3a",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.05,
+        "url": "/uploads/map_marker_aid_collection_e635624c3a.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:10:48.784Z",
+        "updated_at": "2021-02-26T13:10:48.802Z"
+      },
+      "category_map_pin_icon_assigned": {
+        "id": 20,
+        "name": "map-marker--aid-collection--assigned.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_aid_collection_assigned_e1843dc07a",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.07,
+        "url": "/uploads/map_marker_aid_collection_assigned_e1843dc07a.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:10:42.665Z",
+        "updated_at": "2021-02-26T13:10:42.686Z"
+      },
+      "entries": [
+        {
+          "id": 1,
+          "title": "Nudimo Pomoć: SISAK, NK Metalac - Hrana, Higijena, Baby proizvodi, Cerade, Grijalice, Pomoć u traženju kamp kućica, kontejnera. - 097 681 9196",
+          "location": "Stadion NK \"METALAC\" Sisak, Ulica Hrvatskog narodnog preporoda, Sisak, Croatia",
+          "location_latitude": 45.4582084,
+          "location_longitude": 16.3808918,
+          "description": "Nudimo:\n\n1. Hranu\n2. Higijenu\n3. Odjeću\n4. Imamo, ali ne uvijek grijalice, cerade…\n5. Pelene za bebe, kolica, kašice, dude, itd.\n6. Pomoć u trazenju kamp kucica, kontejnera\n7. Psiholoska pomoc - Razgovor i suosjecanje ♥\n8. Posjecujemo djecu s nasom maskotom, igrackama i razveseljujemo najmlađe da im ova teska vremena produ sto ljepse i mirnije moguce ❤\n\nAdresa: \nUl. Hrvatskog narodnog preporoda 35, Sisak\n\nGoogle Maps lokacija:\nhttps://goo.gl/maps/AMBVZungu1j5KTWy7\n\n☎: 097 681 9196",
+          "contact_name": "Test",
+          "contact_email": "potres@2020.hr",
+          "contact_phone": "+385916183233",
+          "contact_available_on_whatsapp": false,
+          "contact_available_on_telegram": false,
+          "status": null,
+          "assigned_coordinator": null,
+          "volunteer_assigned": null,
+          "done": false,
+          "follow_up_date": null,
+          "tags": "Hrana, Higijenske potrepštine, Odjeća, Psiholozi",
+          "date_from": null,
+          "date_until": null,
+          "entry_category": 2,
+          "notes": null,
+          "integrations_data": null,
+          "volunteer_marked_as_done": null,
+          "published_at": "2021-02-05T18:03:50.665Z",
+          "created_by": null,
+          "updated_by": null,
+          "created_at": "2021-02-05T18:03:50.671Z",
+          "updated_at": "2021-02-26T13:10:50.423Z"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type_slug": "smjestaj",
+      "type_name": "Smještaj",
+      "available_in_public_menu": true,
+      "menu_title": "Smještaji",
+      "plural_title": "Smještaji",
+      "category_color_hex": "#333333",
+      "add_entry_label": "Nudim smještaj",
+      "created_at": "2021-02-05T17:55:45.527Z",
+      "updated_at": "2021-02-26T13:11:32.759Z",
+      "category_map_pin_icon": {
+        "id": 27,
+        "name": "map-marker--accommodation.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_accommodation_a511d7f999",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.72,
+        "url": "/uploads/map_marker_accommodation_a511d7f999.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:11:30.412Z",
+        "updated_at": "2021-02-26T13:11:30.421Z"
+      },
+      "category_map_pin_icon_assigned": {
+        "id": 25,
+        "name": "map-marker--accommodation--assigned.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_accommodation_assigned_c4fe6b011d",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.74,
+        "url": "/uploads/map_marker_accommodation_assigned_c4fe6b011d.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:11:17.407Z",
+        "updated_at": "2021-02-26T13:11:17.415Z"
+      },
+      "entries": []
+    },
+    {
+      "id": 4,
+      "type_slug": "prijevoz",
+      "type_name": "Prijevoz",
+      "available_in_public_menu": true,
+      "menu_title": "Prijevozi",
+      "plural_title": "Prijevozi",
+      "category_color_hex": "#333333",
+      "add_entry_label": "Nudim prijevoz",
+      "created_at": "2021-02-05T17:56:30.354Z",
+      "updated_at": "2021-02-26T13:11:04.829Z",
+      "category_map_pin_icon": {
+        "id": 23,
+        "name": "map-marker--transport.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_transport_5e13a21a01",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.62,
+        "url": "/uploads/map_marker_transport_5e13a21a01.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:11:03.062Z",
+        "updated_at": "2021-02-26T13:11:03.073Z"
+      },
+      "category_map_pin_icon_assigned": {
+        "id": 22,
+        "name": "map-marker--transport--assigned.svg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 36,
+        "height": 36,
+        "formats": null,
+        "hash": "map_marker_transport_assigned_bde9eb0dcd",
+        "ext": ".svg",
+        "mime": "image/svg+xml",
+        "size": 2.64,
+        "url": "/uploads/map_marker_transport_assigned_bde9eb0dcd.svg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2021-02-26T13:10:59.053Z",
+        "updated_at": "2021-02-26T13:10:59.066Z"
+      },
+      "entries": []
+    }
+  ],
+  "publicSiteSettings": [
+    {
+      "id": 1,
+      "site_title": "PotresApp | Pomoć žrtvama potresa",
+      "site_description": "Ovo je sajt za pomoć",
+      "footer_notice_text": "Aplikacija je work in progress i kontinuirano se radi na unaprijeđenju. Za sve probleme i upite slobodno se javite na <a href=\"mailto:matej@bytepanda.io\">matej@bytepanda.io</a>.",
+      "map_zones": [
+        {
+          "name": "Nebojan i okolica",
+          "color": "#2ecc71",
+          "polygon": [
+            {
+              "lat": 45.54758831119227,
+              "lng": 16.003340853451395
+            },
+            {
+              "lat": 45.55059003914044,
+              "lng": 16.417174261445112
+            },
+            {
+              "lat": 45.50260794239341,
+              "lng": 16.302642438643304
+            },
+            {
+              "lat": 45.45188505631597,
+              "lng": 16.18044030530722
+            },
+            {
+              "lat": 45.3795794948337,
+              "lng": 16.003457905303257
+            },
+            {
+              "lat": 45.54758831119227,
+              "lng": 16.003340853451395
+            }
+          ]
+        },
+        {
+          "name": "Gornji Hrastovac i okolica",
+          "color": "#3498db",
+          "polygon": [
+            {
+              "lat": 45.26831147094645,
+              "lng": 16.299833194198794
+            },
+            {
+              "lat": 45.269382396365515,
+              "lng": 16.604402112724156
+            },
+            {
+              "lat": 45.448456805293795,
+              "lng": 16.606474669805447
+            },
+            {
+              "lat": 45.4210843473792,
+              "lng": 16.482199979388078
+            },
+            {
+              "lat": 45.408292523967916,
+              "lng": 16.44065338186195
+            },
+            {
+              "lat": 45.342898369818016,
+              "lng": 16.35718860160749
+            },
+            {
+              "lat": 45.26831147094645,
+              "lng": 16.299833194198794
+            }
+          ]
+        },
+        {
+          "name": "Sisak i okolica",
+          "color": "#9b59b6",
+          "polygon": [
+            {
+              "lat": 45.50260794239341,
+              "lng": 16.302642438643304
+            },
+            {
+              "lat": 45.55059003914044,
+              "lng": 16.417174261445112
+            },
+            {
+              "lat": 45.553989832162195,
+              "lng": 16.604812085813165
+            },
+            {
+              "lat": 45.448456805293795,
+              "lng": 16.606474669805447
+            },
+            {
+              "lat": 45.4210843473792,
+              "lng": 16.482199979388078
+            },
+            {
+              "lat": 45.408292523967916,
+              "lng": 16.44065338186195
+            },
+            {
+              "lat": 45.50260794239341,
+              "lng": 16.302642438643304
+            }
+          ]
+        },
+        {
+          "name": "Petrinja i okolica",
+          "color": "#f1c40f",
+          "polygon": [
+            {
+              "lat": 45.45188505631597,
+              "lng": 16.18044030530722
+            },
+            {
+              "lat": 45.50260794239341,
+              "lng": 16.302642438643304
+            },
+            {
+              "lat": 45.408292523967916,
+              "lng": 16.44065338186195
+            },
+            {
+              "lat": 45.342898369818016,
+              "lng": 16.35718860160749
+            },
+            {
+              "lat": 45.45188505631597,
+              "lng": 16.18044030530722
+            }
+          ]
+        },
+        {
+          "name": "Glina i Strašnik",
+          "color": "#e74c3c",
+          "polygon": [
+            {
+              "lat": 45.342898369818016,
+              "lng": 16.35718860160749
+            },
+            {
+              "lat": 45.26831147094645,
+              "lng": 16.299833194198794
+            },
+            {
+              "lat": 45.26831147094647,
+              "lng": 16.00439432011809
+            },
+            {
+              "lat": 45.3795794948337,
+              "lng": 16.003457905303257
+            },
+            {
+              "lat": 45.45188505631597,
+              "lng": 16.18044030530722
+            },
+            {
+              "lat": 45.342898369818016,
+              "lng": 16.35718860160749
+            }
+          ]
+        }
+      ],
+      "donor_instructions": "<strong>Upute za donatore:</strong>\n            <ul>\n              <li>Obavezno nazovite tražitelje pomoći za provjeru je li im u međuvremenu pružena pomoć!</li>\n              <li>Ukoliko im je u međuvremenu pružena pomoć, ali to nije naznačeno u sustavu, molimo Vas da dodate tu napomenu u komentar.</li>\n              <li>Ulogirajte se u aplikaciju i prebacite zahtjev na sebe ako planirate pomoći.</li>\n              <li>Status zahtjeva naznačite kao \"ispunjeno\" nakon što je zahtjev ispunjen!</li>\n            </ul>\n            <br />\n            <strong>Hvala na pomoći ❤️</strong>",
+      "created_at": "2021-02-05T17:52:23.508Z",
+      "updated_at": "2021-02-25T09:33:09.280Z",
+      "header_menu_marketing_items": [
+        {
+          "id": 1,
+          "item_url": "/pages/informacije",
+          "item_title": "Korisne informacije"
+        }
+      ],
+      "footer_menu_items": [
+        {
+          "id": 2,
+          "item_url": "/pages/uvjeti-koristenja",
+          "item_title": "Uvjeti korištenja"
+        },
+        {
+          "id": 3,
+          "item_url": "/pages/informacije",
+          "item_title": "Korisne informacije"
+        }
+      ],
+      "og_share_image": null
+    }
+  ]
+}

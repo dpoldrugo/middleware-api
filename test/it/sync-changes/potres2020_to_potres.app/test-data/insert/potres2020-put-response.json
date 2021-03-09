@@ -1,0 +1,63 @@
+{
+  "id": 1058,
+  "url": "https://potres2020.openit.hr/api/v3/posts/1058",
+  "user": {
+    "id": 374,
+    "url": "https://potres2020.openit.hr/api/v3/users/374"
+  },
+  "parent_id": null,
+  "form": {
+    "id": 6,
+    "url": "https://potres2020.openit.hr/api/v3/forms/6"
+  },
+  "message": null,
+  "color": "#A51A1A",
+  "type": "report",
+  "title": "test davor - title",
+  "slug": "test-davor-title-603998b456e3a",
+  "content": "kratki opis",
+  "author_email": null,
+  "author_realname": null,
+  "status": "published",
+  "created": "2021-02-27T00:56:20+00:00",
+  "updated": "2021-03-07T22:45:37+00:00",
+  "locale": "en_us",
+  "values": {
+    "87e86d94-df5d-4eb5-9080-5a4d44a5f769": [
+      {
+        "lon": 16.29987,
+        "lat": 45.446644
+      }
+    ],
+    "3c8441b3-5744-48bb-9d9e-d6ec4be50613": [
+      "detaljniji opis"
+    ],
+    "6b541a6d-eb02-4824-8662-a741da46b2b3": [
+      "zaključak"
+    ],
+    "35560aa7-b4a4-4ac5-a5ef-0d280b21b48b": [
+      "{\"potres.app\":{\"original_id\":14,\"first_synced_on\":\"2021-03-07T20:30:27.411Z\",\"last_synced_on\":\"2021-03-07T22:15:04.646Z\"}}"
+    ],
+    "4583d2a1-331a-4da2-86df-3391e152198e": [
+      "Davor Poldrugo, 0921068955"
+    ]
+  },
+  "post_date": "2021-02-27T00:52:30+00:00",
+  "tags": [],
+  "published_to": [],
+  "completed_stages": [],
+  "sets": [],
+  "lock": null,
+  "source": null,
+  "contact": null,
+  "data_source_message_id": null,
+  "allowed_privileges": [
+    "read",
+    "create",
+    "update",
+    "delete",
+    "search",
+    "change_status",
+    "read_full"
+  ]
+}

@@ -1,6 +1,6 @@
 swagger:
   outputDirectory: ./dist
-  entryFile: 
+  entryFile:
     - ./src/api/*
   outputFormat: OpenApi_3
   name: middleware-api

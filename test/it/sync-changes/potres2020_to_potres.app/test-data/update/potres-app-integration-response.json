@@ -1,0 +1,39 @@
+{
+  "result": "Entry successfully added.",
+  "entry": {
+    "id": 15,
+    "title": "test davor - title",
+    "location": "45.446644,16.29987",
+    "location_latitude": 45.446644,
+    "location_longitude": 16.29987,
+    "description": "Kratki opis:\nkratki opis\n\nDetaljniji opis:\ndetaljniji opis",
+    "contact_name": "Davor Poldrugo",
+    "contact_email": null,
+    "contact_phone": "+385921068955",
+    "contact_available_on_whatsapp": null,
+    "contact_available_on_telegram": null,
+    "status": "zavrseno",
+    "assigned_coordinator": null,
+    "volunteer_assigned": null,
+    "done": true,
+    "follow_up_date": null,
+    "tags": null,
+    "date_from": null,
+    "date_until": null,
+    "entry_category": null,
+    "notes": "zaključak",
+    "integrations_data": {
+      "potres2020": {
+        "original_id": 1059,
+        "first_synced_on": "2021-03-07T20:30:27.411Z",
+        "last_synced_on": "2021-03-07T22:15:04.646Z"
+      }
+    },
+    "volunteer_marked_as_done": null,
+    "published_at": "2021-03-07T20:30:30.112Z",
+    "created_at": "2021-03-07T20:30:30.117Z",
+    "updated_at": "2021-03-07T22:15:04.682Z",
+    "comments": []
+    }
+}
+

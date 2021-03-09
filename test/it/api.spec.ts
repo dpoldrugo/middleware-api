@@ -1,16 +1,16 @@
 'use strict';
-import * as test_utils from "./test-utils/utils";
+import * as test_utils from "../test-utils/utils";
 test_utils.initEnvFile();
 import * as chai from 'chai';
 import {after, before, describe, it} from 'mocha';
 import * as request from 'request';
 import {RequestAPI} from 'request';
 import {HttpMethod, Server} from 'typescript-rest';
-import {ApiServer} from '../src/api-server';
-import {MongoConnector} from "../src/mongo-connector";
-import Potres2020WebhooksRepo, {Potres2020Webhooks} from "../src/model/Potres2020WebhooksDocument";
-import {CheckSha256Request} from "../src/model/CheckSha256Request";
-import {ApiError} from "../src/model/ApiError";
+import {ApiServer} from '../../src/api-server';
+import {MongoConnector} from "../../src/mongo-connector";
+import Potres2020WebhooksRepo, {Potres2020Webhooks} from "../../src/model/Potres2020WebhooksDocument";
+import {CheckSha256Request} from "../../src/model/CheckSha256Request";
+import {ApiError} from "../../src/model/ApiError";
 
 describe('API Tests', () => {
 
@@ -342,4 +342,3 @@ describe('API Tests', () => {
 
     });
 });
-
