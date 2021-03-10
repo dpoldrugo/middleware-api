@@ -8,7 +8,7 @@ import {ApiServer} from '../../../../src/api-server';
 import {MongoConnector} from "../../../../src/mongo-connector";
 import {EntryStatus} from "../../../../src/service/processor/potres2020_to_potres.app/PotresAppModel";
 import {
-    CUSTOM_FIELD_LOCATION,
+    CUSTOM_FIELD_LOCATION, POTRES2020_BASE_URL, POTRES2020_POSTS_API_ENDPOINT,
     POTRES_APP_BACKEND_BASE_URL
 } from "../../../../src/service/processor/potres2020_to_potres.app/Config";
 
@@ -46,10 +46,9 @@ describe('/api/sync/changes', () => {
     });
 
     describe('POST /potres2020', () => {
-        const potres2020BaseUrl = getTestJson('common', 'potres2020-base-url.json').url;
 
         beforeEach(() => {
-            nock(potres2020BaseUrl)
+            nock(POTRES2020_BASE_URL)
                 .defaultReplyHeaders(defaultMockResponseHeaders)
                 .post('/oauth/token')
                 .reply(200, getTestJson('common','oauth-token-response.json'))
@@ -212,11 +211,10 @@ const defaultMockResponseHeaders = {
 
 function mockExternalHttpResponses(test: string) {
     const testPost = getTestJson(test, 'potres2020-test-post.json');
-    const testPostBaseUrl = new URL(testPost.url).origin;
-    const testPostPath = new URL(testPost.url).pathname;
-    nock(testPostBaseUrl)
+    const testPostEndpoint = POTRES2020_POSTS_API_ENDPOINT + testPost.id;
+    nock(POTRES2020_BASE_URL)
         .defaultReplyHeaders(defaultMockResponseHeaders)
-        .get(testPostPath)
+        .get(testPostEndpoint)
         .reply(200, getTestJson(test, 'potres2020-get-test-post-authorized.json'));
 
     nock(POTRES_APP_BACKEND_BASE_URL)
@@ -234,8 +232,8 @@ function mockExternalHttpResponses(test: string) {
         .get(/\/entries.*/)
         .reply(200, getTestJson(test, 'potres-app-integration-response.json').entry);
 
-    nock(testPostBaseUrl)
+    nock(POTRES2020_BASE_URL)
         .defaultReplyHeaders(defaultMockResponseHeaders)
-        .put(testPostPath)
+        .put(testPostEndpoint)
         .reply(200, getTestJson(test, 'potres2020-put-response.json'));
 }

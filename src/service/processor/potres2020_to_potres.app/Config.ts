@@ -9,6 +9,9 @@ if (process.env.NODE_ENV && process.env.NODE_ENV.includes('test')) {
 export const POTRES_APP_BACKEND_BASE_URL = config.POTRES_APP_BACKEND_BASE_URL || 'http://localhost:1337';
 export const POTRES_APP_API_KEY = config.POTRES_APP_API_KEY || 'davor-dev-token-fdsfdsfldjfddkgfgdf';
 
+export const POTRES2020_POSTS_API_ENDPOINT = '/api/v3/posts/';
+
+export const POTRES2020_BASE_URL = config.POTRES2020_BASE_URL || 'https://dev-potres2020.openit.hr';
 export const POTRES2020_USERNAME = config.POTRES2020_USERNAME;
 export const POTRES2020_PASSWORD = config.POTRES2020_PASSWORD;
 export const POTRES2020_CLIENT_ID = config.POTRES2020_CLIENT_ID;

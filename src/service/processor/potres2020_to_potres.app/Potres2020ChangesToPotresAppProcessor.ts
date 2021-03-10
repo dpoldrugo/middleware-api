@@ -11,6 +11,7 @@ import {OnlyInstantiableByContainer, Singleton} from "typescript-ioc";
 import {Errors} from "typescript-rest";
 import {Entry} from "./PotresAppModel";
 import * as context from "../../../service/context-utils";
+import {POTRES2020_BASE_URL, POTRES2020_POSTS_API_ENDPOINT} from "./Config";
 
 const mime = require('mime');
 const axiosModule = require('axios');
@@ -34,9 +35,6 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
         if (!sourceRequest.body) {
             throw new Errors.BadRequestError("no payload present");
         }
-        else if (!sourceRequest.body.url) {
-            throw new Errors.BadRequestError("url not present in payload");
-        }
         else if (!sourceRequest.body.id) {
             throw new Errors.BadRequestError("id not present in payload");
         }
@@ -50,14 +48,15 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
             return this.buildResponse(sourceRequest, null, responseMessages);
         }
         const oAuthToken = await this.loginToPotres2020IfNeededAndGetOAuthToken(sourceRequest);
-        return await axios.get(sourceRequest.body.url, {
+        const postApiUrl = POTRES2020_BASE_URL + POTRES2020_POSTS_API_ENDPOINT + sourceRequest.body.id;
+        return await axios.get(postApiUrl, {
             headers: {
                 Authorization: `${oAuthToken.token_type} ${oAuthToken.access_token}`,
             }
         }).then(async (responseWithFullData: AxiosResponse) => {
             const entry: PotresAppModel.Entry = this.transformToPotresAppModel(responseWithFullData, responseMessages);
             const integrationMetadata = this.getIntegrationMetadata(responseWithFullData, responseMessages);
-            responseMessages.push(`Got authorized response from '${sourceRequest.body.url}'. IntegrationMetadata: ${JSON.stringify(integrationMetadata)}. access_token: ${process.env.NODE_ENV !== 'production' ? oAuthToken.access_token : '****'}`);
+            responseMessages.push(`Got authorized response from '${postApiUrl}'. IntegrationMetadata: ${JSON.stringify(integrationMetadata)}. access_token: ${process.env.NODE_ENV !== 'production' ? oAuthToken.access_token : '****'}`);
 
             let potresAppIntegrationEndpoint = PotresAppIntegrationEndpoint.INSERT;
             let entryFromBackend: Entry;
@@ -97,7 +96,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
                     // newIntegrationMetadataValue.original_id = responsePotresApp.data.entry.id;
                     // newValues[config.CUSTOM_FIELD_INTEGRATION_METADATA] = new Array(JSON.stringify(new PotresAppModel.IntegrationMetadataDefault(this.sinkIdentifier(), newIntegrationMetadataValue)));
                     //
-                    // await axios.put(sourceRequest.body.url, {values: newValues},{
+                    // await axios.put(postApiUrl, {values: newValues},{
                     //     headers: {
                     //         Authorization: `${oAuthToken.token_type} ${oAuthToken.access_token}`,
                     //         'Content-Type': mime.lookup('json')
@@ -138,7 +137,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
                 'Content-Type': mime.lookup('json')
             },
             method: 'post',
-            url: `${new URL(sourceRequest.body.url).origin}/oauth/token`
+            url: `${POTRES2020_BASE_URL}/oauth/token`
         };
 
         const oAuthToken: OAuthToken = await axios(requestConfig)

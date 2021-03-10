@@ -35,7 +35,7 @@ export class SyncApi {
         const sourceIdentifier = req.path.substring(req.path.lastIndexOf('/')+1);
         Container.get<SourceProcessorRegistry>(SourceProcessorRegistry).getProcessors(sourceIdentifier).forEach(value => value.validateRequest(req));
     })
-    @Response<ApiError>(400, 'url not present in payload', {error: 'url not present in payload', code: 400})
+    @Response<ApiError>(400, 'id not present in payload', {error: 'id not present in payload', code: 400})
     @POST
     public async changes(
         @PathParam('sourceIdentifier') sourceIdentifier: string,
