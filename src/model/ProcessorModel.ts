@@ -13,6 +13,11 @@ export type SourceProcessorResponseMessages = Array<string>;
  * When a {@link SourceProcessor} processes the changes, it will result with this response.
  */
 export class SourceProcessorResponse {
+
+    /**
+     * Cryptographically generated id for every processor response.
+     */
+    public processorRunId: string;
     /**
      * Identifier of the source system of changes
      * @type {SourceIdentifier}

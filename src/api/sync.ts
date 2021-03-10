@@ -1,4 +1,11 @@
-import {ContextRequest, Errors, HeaderParam, Param, Path, PathParam, POST, PreProcessor} from "typescript-rest";
+import {
+    ContextRequest,
+    ContextResponse,
+    Path,
+    PathParam,
+    POST,
+    PreProcessor
+} from "typescript-rest";
 import {Container, Inject} from "typescript-ioc";
 import * as express from "express";
 import {SyncChangesResponse} from "../model/SyncChangesResponse";
@@ -6,6 +13,8 @@ import {SourceProcessorRegistry} from "../service/processor/SourceProcessorRegis
 import {SyncChangesRequest} from "../model/SyncChangesRequest";
 import {Response} from "typescript-rest-swagger";
 import {ApiError} from "../model/ApiError";
+import {generateId} from "../service/utils";
+import * as context from "../service/context-utils";
 
 @Path('/api/sync')
 export class SyncApi {
@@ -32,13 +41,16 @@ export class SyncApi {
         @PathParam('sourceIdentifier') sourceIdentifier: string,
         // @HeaderParam('X-Ushahidi-Signature', ) sha256: string, // TODO add sha256 validation - requires webhook_uuid to be stored in DB
         syncChangesRequest: SyncChangesRequest, // used just for swagger doc
-        @ContextRequest request: express.Request): Promise<SyncChangesResponse> {
-        const syncChangesResponse: SyncChangesResponse = new SyncChangesResponse();
+        @ContextRequest request: express.Request,
+        @ContextResponse response: express.Response): Promise<SyncChangesResponse> {
+        const syncChangesResponse: SyncChangesResponse = new SyncChangesResponse(request.ip, context.getRequestId());
         const processors = this.sourceProcessorRegistry.getProcessors(sourceIdentifier);
         for (const sourceProcessor of processors) {
+            context.setProcessorRunId(generateId());
             syncChangesResponse.addResult(await sourceProcessor.process(request));
         }
-
+        response.setHeader('X-Request-Id', context.getRequestId());
+        syncChangesResponse.saveResultsToDb();
         return syncChangesResponse;
     }
 }

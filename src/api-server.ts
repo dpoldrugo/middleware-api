@@ -10,6 +10,8 @@ import * as mongoose from "mongoose";
 import {MongoError} from "mongodb";
 import {ApiError} from "./model/ApiError";
 const markdownServe = require("markdown-serve");
+import * as context from "./service/context-utils";
+import {generateId} from "./service/utils";
 
 export class ApiServer {
     public init = initEnvFile();
@@ -74,12 +76,24 @@ export class ApiServer {
         // Parse JSON bodies for this app. Make sure you put
         // `app.use(express.json())` **before** your route handlers!
         this.app.use(express.json());
+        this.configureRequestContext();
         this.app.use('/test-coverage',express.static(path.resolve(__dirname, '../reports/coverage')));
         this.app.use('/examples-json', express.static(path.resolve(__dirname, '../test/it/sync-changes/potres2020_to_potres.app')));
         this.app.use(cors());
         this.app.use(morgan('combined'));
         // this.app.use(morgan('dev'));
         this.configureAuthenticator();
+    }
+
+    private configureRequestContext() {
+        this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+            context.requestContext.bindEmitter(req);
+            context.requestContext.bindEmitter(res);
+            context.requestContext.run(() => {
+                context.setRequestId(generateId());
+                next();
+            });
+        });
     }
 
     private configureErrorHandling() {

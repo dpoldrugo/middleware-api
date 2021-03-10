@@ -10,9 +10,12 @@ import * as config from "./Config";
 import {OnlyInstantiableByContainer, Singleton} from "typescript-ioc";
 import {Errors} from "typescript-rest";
 import {Entry} from "./PotresAppModel";
+import * as context from "../../../service/context-utils";
 
 const mime = require('mime');
-const axios = require('axios');
+const axiosModule = require('axios');
+const axios = axiosModule.create();
+axios.interceptors.request.use(commonRequestHeadersInterceptor);
 
 export const SOURCE_IDENTIFIER = 'potres2020';
 export const SINK_IDENTIFIER = 'potres.app';
@@ -48,7 +51,9 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
         }
         const oAuthToken = await this.loginToPotres2020IfNeededAndGetOAuthToken(sourceRequest);
         return await axios.get(sourceRequest.body.url, {
-            headers: {Authorization: `${oAuthToken.token_type} ${oAuthToken.access_token}`}
+            headers: {
+                Authorization: `${oAuthToken.token_type} ${oAuthToken.access_token}`,
+            }
         }).then(async (responseWithFullData: AxiosResponse) => {
             const entry: PotresAppModel.Entry = this.transformToPotresAppModel(responseWithFullData, responseMessages);
             const integrationMetadata = this.getIntegrationMetadata(responseWithFullData, responseMessages);
@@ -152,6 +157,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
 
     private buildResponse(sourceRequest: express.Request, sinkResponse: AxiosResponse, responseMessages: SourceProcessorResponseMessages, error?: any): SourceProcessorResponse {
         const response = new SourceProcessorResponse({
+            processorRunId: context.getProcessorRunId(),
             sinkIdentifier: this.sinkIdentifier(),
             sourceIdentifier: this.sourceIdentifier(),
             sourceRequest: new ReqResData({
@@ -252,6 +258,13 @@ ${pDetailDescription}`);
         return null;
     }
 }
+
+function commonRequestHeadersInterceptor(request: express.Request) {
+    request.headers['X-Request-Id'] = context.getRequestId();
+    request.headers['X-Processor-Run-Id'] = context.getProcessorRunId();
+    return request;
+}
+
 
 class Potres2020OAuthTokenMetadata{
     public oAuthToken: OAuthToken;
