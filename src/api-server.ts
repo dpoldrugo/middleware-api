@@ -37,14 +37,14 @@ export class ApiServer {
     public async start() {
         return new Promise<any>((resolve, reject) => {
             // @ts-ignore
-            this.server = this.app.listen(this.PORT, (err: any) => {
+            this.server = this.app.listen(this.PORT, '0.0.0.0', (err: any) => {
                 if (err) {
                     return reject(err);
                 }
 
                 // TODO: replace with Morgan call
                 // tslint:disable-next-line:no-console
-                console.log(`Listening to http://127.0.0.1:${this.PORT}`);
+                console.log(`Listening to http://localhost:${this.PORT}`);
 
                 return resolve();
             });
