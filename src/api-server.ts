@@ -76,6 +76,7 @@ export class ApiServer {
         // Parse JSON bodies for this app. Make sure you put
         // `app.use(express.json())` **before** your route handlers!
         this.app.use(express.json());
+        this.app.enable('trust proxy');
         this.configureRequestContext();
         this.app.use('/test-coverage',express.static(path.resolve(__dirname, '../reports/coverage')));
         this.app.use('/examples-json', express.static(path.resolve(__dirname, '../test/it/sync-changes/potres2020_to_potres.app')));
