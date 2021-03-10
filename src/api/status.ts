@@ -6,7 +6,7 @@ import {StatusResponse} from "../model/StatusResponse";
 export class StatusApi {
 
     /**
-     * Status check which is service is up should return:
+     * Status check  - when service is up, it should return:
      * <pre>
      *     {"status": "OK"}
      * </pre>
