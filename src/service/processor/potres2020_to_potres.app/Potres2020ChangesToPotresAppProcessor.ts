@@ -180,9 +180,9 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
         });
         if (error) {
             if (error.response && error.response.data)
-                response['error'] = error.response.data;
+                response.error = error.response.data;
             else
-                response['error'] = error;
+                response.error = error;
         }
         return response;
     }
@@ -204,19 +204,24 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
         if (!phone) phone = 'nepoznat';
         if (!contactName) contactName = 'nepoznat';
 
-        const lat = this.getValueOfCustomField(responseWithFullData, config.CUSTOM_FIELD_LOCATION, responseMessages).lat;
-        const lon = this.getValueOfCustomField(responseWithFullData, config.CUSTOM_FIELD_LOCATION, responseMessages).lon;
-        return new PotresAppModel.Entry({
+        const entry = new PotresAppModel.Entry({
             contact_name: contactName,
             contact_phone: phone,
             description: buildDescription(content, detailDescription),
             done: config.Potres2020ToPotresAppDoneMapping.filter(value => value.key === responseWithFullData.data.status)[0].value,
-            location: `${lat},${lon}`,
-            location_latitude: lat,
-            location_longitude: lon,
             notes: notes,
             title: responseWithFullData.data.title
         });
+        const locationCustomField = this.getValueOfCustomField(responseWithFullData, config.CUSTOM_FIELD_LOCATION, responseMessages);
+        if (locationCustomField) {
+            entry.location = `${locationCustomField.lat},${locationCustomField.lon}`;
+            entry.location_latitude = locationCustomField.lat;
+            entry.location_longitude = locationCustomField.lon;
+        }
+        else
+            entry.location = 'nepoznato';
+
+        return entry;
 
         function buildDescription(pContent: string, pDetailDescription: string): string {
             return (
