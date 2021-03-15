@@ -11,6 +11,7 @@ import {
     CUSTOM_FIELD_LOCATION, POTRES2020_BASE_URL, POTRES2020_POSTS_API_ENDPOINT,
     POTRES_APP_BACKEND_BASE_URL
 } from "../../../../src/service/processor/potres2020_to_potres.app/Config";
+import {PotresAppIntegrationEndpoint} from "../../../../src/service/processor/potres2020_to_potres.app/Potres2020ChangesToPotresAppProcessor";
 
 test_utils.initEnvFile();
 
@@ -87,7 +88,7 @@ describe('/api/sync/changes', () => {
                             entryStatusInRequest: EntryStatus.novo,
                             entryStatusInResponse: EntryStatus.novo,
                             shouldCheckForNoCustomFieldMessage: false,
-                            sinkResponseUrlToContain: '/data-api/integration-add-entry'
+                            sinkResponseUrlToContain: '/data-api/integration-upsert-entry'
                         }));
                         done();
                     });
@@ -122,7 +123,7 @@ describe('/api/sync/changes', () => {
                             entryStatusInRequest: undefined,
                             entryStatusInResponse: EntryStatus.zavrseno,
                             shouldCheckForNoCustomFieldMessage: true,
-                            sinkResponseUrlToContain: '/data-api/integration-update-entry'
+                            sinkResponseUrlToContain: '/data-api/integration-upsert-entry'
                         }));
                         done();
                     });
@@ -219,12 +220,7 @@ function mockExternalHttpResponses(test: string) {
 
     nock(POTRES_APP_BACKEND_BASE_URL)
         .defaultReplyHeaders(defaultMockResponseHeaders)
-        .post('/data-api/integration-add-entry')
-        .reply(201, getTestJson(test, 'potres-app-integration-response.json'));
-
-    nock(POTRES_APP_BACKEND_BASE_URL)
-        .defaultReplyHeaders(defaultMockResponseHeaders)
-        .post('/data-api/integration-update-entry')
+        .post(PotresAppIntegrationEndpoint.UPSERT)
         .reply(200, getTestJson(test, 'potres-app-integration-response.json'));
 
     nock(POTRES_APP_BACKEND_BASE_URL)

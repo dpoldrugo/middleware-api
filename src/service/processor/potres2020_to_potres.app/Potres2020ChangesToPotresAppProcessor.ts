@@ -58,15 +58,11 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
             const integrationMetadata = this.getIntegrationMetadata(responseWithFullData, responseMessages);
             responseMessages.push(`Got authorized response from '${postApiUrl}'. IntegrationMetadata: ${JSON.stringify(integrationMetadata)}. access_token: ${process.env.NODE_ENV !== 'production' ? oAuthToken.access_token : '****'}`);
 
-            let potresAppIntegrationEndpoint = PotresAppIntegrationEndpoint.INSERT;
             let entryFromBackend: Entry;
             // @ts-ignore
             if (integrationMetadata && integrationMetadata[this.sinkIdentifier()] && integrationMetadata[this.sinkIdentifier()].id !== null) {
                 // @ts-ignore
                 entryFromBackend = await axios.get<Entry>(config.POTRES_APP_BACKEND_BASE_URL + POTRES_APP_ENTRIES_PATH + integrationMetadata[this.sinkIdentifier()].original_id).then( (entryResponse: AxiosResponse<Entry>) => {
-                        if (entryResponse.data.id) {
-                            potresAppIntegrationEndpoint = PotresAppIntegrationEndpoint.UPDATE;
-                        }
                         return entryResponse.data;
                     }
                 ).catch((error: AxiosError) => {
@@ -86,7 +82,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
             };
             // @ts-ignore
             return await axios.post<IntegrationResponse>(
-                config.POTRES_APP_BACKEND_BASE_URL + potresAppIntegrationEndpoint,
+                config.POTRES_APP_BACKEND_BASE_URL + PotresAppIntegrationEndpoint.UPSERT,
                 integrationRequest,
                 requestConfigPotresApp)
                 .then(async (responsePotresApp: AxiosResponse<PotresAppModel.IntegrationResponse>) => {
@@ -300,9 +296,10 @@ class OAuthToken {
     public refresh_token: String;
 }
 
-enum PotresAppIntegrationEndpoint {
+export enum PotresAppIntegrationEndpoint {
     INSERT = '/data-api/integration-add-entry',
-    UPDATE = '/data-api/integration-update-entry'
+    UPDATE = '/data-api/integration-update-entry',
+    UPSERT = '/data-api/integration-upsert-entry'
 }
 
 
