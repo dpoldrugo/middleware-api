@@ -12,6 +12,7 @@ import {
     POTRES_APP_BACKEND_BASE_URL
 } from "../../../../src/service/processor/potres2020_to_potres.app/Config";
 import {PotresAppIntegrationEndpoint} from "../../../../src/service/processor/potres2020_to_potres.app/Potres2020ChangesToPotresAppProcessor";
+import {SourceIdentifier} from "../../../../src/model/ProcessorModel";
 
 test_utils.initEnvFile();
 
@@ -88,7 +89,8 @@ describe('/api/sync/changes', () => {
                             entryStatusInRequest: EntryStatus.novo,
                             entryStatusInResponse: EntryStatus.novo,
                             shouldCheckForNoCustomFieldMessage: false,
-                            sinkResponseUrlToContain: '/data-api/integration-upsert-entry'
+                            sinkResponseUrlToContain: '/data-api/integration-upsert-entry',
+                            sourceIdentifier: 'potres2020'
                         }));
                         done();
                     });
@@ -123,7 +125,8 @@ describe('/api/sync/changes', () => {
                             entryStatusInRequest: undefined,
                             entryStatusInResponse: EntryStatus.zavrseno,
                             shouldCheckForNoCustomFieldMessage: true,
-                            sinkResponseUrlToContain: '/data-api/integration-upsert-entry'
+                            sinkResponseUrlToContain: '/data-api/integration-upsert-entry',
+                            sourceIdentifier: 'potres2020'
                         }));
                         done();
                     });
@@ -149,6 +152,7 @@ class VerificationParams {
     public entryDone: boolean;
     public sinkResponseUrlToContain: string;
     public shouldCheckForNoCustomFieldMessage: boolean;
+    public sourceIdentifier: SourceIdentifier;
 
     constructor(init: Partial<VerificationParams>) {
         Object.assign(this, init);
@@ -169,7 +173,7 @@ function verifyResponse(error: any, body: any, testPost: any, verificationParams
         expect(sinkResult.error.message).to.be.null;
     }
     expect(sinkResult).to.contains({sourceIdentifier: 'potres2020', sinkIdentifier: 'potres.app'});
-    expect(sinkResult.sourceRequest.url).to.include('/api/sync/changes/potres2020');
+    expect(sinkResult.sourceRequest.url).to.eq('http://localhost/api/sync/changes/' + verificationParams.sourceIdentifier);
 
     expect(sinkResult.sinkRequest.data).not.to.be.null;
     expect(sinkResult.sinkRequest.data.data).not.to.be.null;

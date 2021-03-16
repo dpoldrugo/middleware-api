@@ -1,3 +1,5 @@
+import * as express from "express";
+
 export type ProcessorIdentifier = string;
 /**
  * The unique string identifier of the source of the changes.
@@ -52,6 +54,16 @@ export class SourceProcessorResponse {
     constructor(init: Partial<SourceProcessorResponse>) {
         Object.assign(this, init);
     }
+}
+
+export class SourceRequest {
+    public headers: any;
+    public body: any;
+
+    public protocol: string;
+    public hostname: string;
+    public originalUrl: string;
+
 }
 
 /**

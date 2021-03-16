@@ -13,7 +13,7 @@ import {SourceProcessorRegistry} from "../service/processor/SourceProcessorRegis
 import {SyncChangesRequest} from "../model/SyncChangesRequest";
 import {Response} from "typescript-rest-swagger";
 import {ApiError} from "../model/ApiError";
-import {generateId} from "../service/utils";
+import {buildSourceRequest, generateId} from "../service/utils";
 import * as context from "../service/context-utils";
 
 @Path('/api/sync')
@@ -33,7 +33,7 @@ export class SyncApi {
     @Path('/changes/:sourceIdentifier')
     @PreProcessor((req: express.Request) => {
         const sourceIdentifier = req.path.substring(req.path.lastIndexOf('/')+1);
-        Container.get<SourceProcessorRegistry>(SourceProcessorRegistry).getProcessors(sourceIdentifier).forEach(value => value.validateRequest(req));
+        Container.get<SourceProcessorRegistry>(SourceProcessorRegistry).getProcessors(sourceIdentifier).forEach(value => value.validateRequest(buildSourceRequest(req)));
     })
     @Response<ApiError>(400, 'id not present in payload', {error: 'id not present in payload', code: 400})
     @POST
@@ -47,7 +47,7 @@ export class SyncApi {
         const processors = this.sourceProcessorRegistry.getProcessors(sourceIdentifier);
         for (const sourceProcessor of processors) {
             context.setProcessorRunId(generateId());
-            syncChangesResponse.addResult(await sourceProcessor.process(request));
+            syncChangesResponse.addResult(await sourceProcessor.process(buildSourceRequest(request)));
         }
         response.setHeader('X-Request-Id', context.getRequestId());
         syncChangesResponse.saveResultsToDb();

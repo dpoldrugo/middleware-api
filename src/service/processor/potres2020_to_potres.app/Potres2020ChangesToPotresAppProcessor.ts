@@ -1,7 +1,14 @@
 import * as express from "express";
 import {SourceProcessor} from "../SourceProcessor";
 import {AxiosError, AxiosResponse} from "axios";
-import { ReqResData, SinkIdentifier, SourceIdentifier, SourceProcessorResponse, SourceProcessorResponseMessages } from "../../../model/ProcessorModel";
+import {
+    ReqResData,
+    SinkIdentifier,
+    SourceIdentifier,
+    SourceProcessorResponse,
+    SourceProcessorResponseMessages,
+    SourceRequest
+} from "../../../model/ProcessorModel";
 import  * as PotresAppModel from "./PotresAppModel";
 import validator from "validator";
 import { findPhoneNumbersInText } from 'libphonenumber-js';
@@ -31,7 +38,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
     public sourceIdentifier(): SourceIdentifier { return SOURCE_IDENTIFIER;}
     public sinkIdentifier(): SinkIdentifier { return SINK_IDENTIFIER;}
 
-    public validateRequest(sourceRequest: express.Request): void {
+    public validateRequest(sourceRequest: SourceRequest): void {
         if (!sourceRequest.body) {
             throw new Errors.BadRequestError("no payload present");
         }
@@ -40,14 +47,14 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
         }
     }
 
-    public async process(sourceRequest: express.Request): Promise<SourceProcessorResponse> {
+    public async process(sourceRequest: SourceRequest): Promise<SourceProcessorResponse> {
         const responseMessages = new Array<string>();
         responseMessages.push("Starting processing with Potres2020ChangesToPotresAppProcessor");
         if (sourceRequest.body.id < config.POTRES2020_CHANGES_TO_POTRES_APP_PROCESSOR_MIN_ID_TO_PROCESS) {
             responseMessages.push("Processing blocked by config - POTRES2020_CHANGES_TO_POTRES_APP_PROCESSOR_MIN_ID_TO_PROCESS=" + config.POTRES2020_CHANGES_TO_POTRES_APP_PROCESSOR_MIN_ID_TO_PROCESS);
             return this.buildResponse(sourceRequest, null, responseMessages);
         }
-        const oAuthToken = await this.loginToPotres2020IfNeededAndGetOAuthToken(sourceRequest);
+        const oAuthToken = await this.loginToPotres2020IfNeededAndGetOAuthToken();
         const postApiUrl = POTRES2020_BASE_URL + POTRES2020_POSTS_API_ENDPOINT + sourceRequest.body.id;
         return await axios.get(postApiUrl, {
             headers: {
@@ -115,7 +122,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
 
     }
 
-    private async loginToPotres2020IfNeededAndGetOAuthToken(sourceRequest: express.Request): Promise<OAuthToken> {
+    private async loginToPotres2020IfNeededAndGetOAuthToken(): Promise<OAuthToken> {
         if (this.potres2020OAuthTokenMetadata.isValid())
             return this.potres2020OAuthTokenMetadata.oAuthToken;
 
@@ -150,7 +157,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
         return oAuthToken;
     }
 
-    private buildResponse(sourceRequest: express.Request, sinkResponse: AxiosResponse, responseMessages: SourceProcessorResponseMessages, error?: any): SourceProcessorResponse {
+    private buildResponse(sourceRequest: SourceRequest, sinkResponse: AxiosResponse, responseMessages: SourceProcessorResponseMessages, error?: any): SourceProcessorResponse {
         const response = new SourceProcessorResponse({
             processorRunId: context.getProcessorRunId(),
             sinkIdentifier: this.sinkIdentifier(),
@@ -158,7 +165,7 @@ export class Potres2020ChangesToPotresAppProcessor implements SourceProcessor {
             sourceRequest: new ReqResData({
                 data: sourceRequest.body,
                 headers: sourceRequest.headers,
-                url: sourceRequest.protocol + '://' + sourceRequest.get('host') + sourceRequest.originalUrl
+                url: sourceRequest.protocol + '://' + sourceRequest.hostname + sourceRequest.originalUrl
             }),
             // tslint:disable-next-line:object-literal-sort-keys
             sinkRequest: new ReqResData({
